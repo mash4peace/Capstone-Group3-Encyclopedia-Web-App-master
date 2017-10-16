@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<link rel="stylesheet"
+      type="text/css"
+      href="../static/styles/index.css"/>
+<body>  
+
+<head>
+<title>
+Wintr
+</title>
+<center>
+<h1>Wintr</h1>
+<br>
+Encyclotainment
+</center>
+</head>
+<h1>Registration</h1>
+<br>
+<br>
+<br>
+<br>
+{% for message in messages %}
+{{message}}
+<br>
+{% endfor %}
+<br>
+<form method="POST" action="">
+      Enter desired Username:
+	  <br>
+	  <input type="text" name="username" id="username">
+	  <br>
+	  (usernames must be between 8 and 20 characters in length)
+	  <br>
+      Enter Password:
+	  <br>
+	  <input type="password" name="password" id="password">
+	  <br>
+	  (passwords must be between 8 and 20 characters in length)
+      <br>
+	  <input type="submit" name="submit" value="Register">
+</form>
+
+
+</body>
+</html>

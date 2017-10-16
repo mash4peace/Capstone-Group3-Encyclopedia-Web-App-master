@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+  <link rel="stylesheet"
+      type="text/css"
+      href="../static/styles/results.css"/>
+  
+  <head>
+  
+    <title>Encyclopedia</title>
+	<center> Logged in as {{username}}
+		</center>
+
+  </head>
+  <body>
+  <p><a href = '/user'>Back</a> to search page</p>
+<p>Click <a href = '/logout'>here</a> to log out</p>
+  <br>
+  <h1>Search the Web</h1>
+  <div>
+    <center>
+	<form method="POST" action="">
+      {% if searchText %}
+		Enter search term: <input type="text" name="searchText" value={{searchText}}></input>
+	  {% else %}
+		Enter search term: <input type="text" name="searchText"></input>
+	  {% endif %}
+	  
+      <input type="submit" name="submit" value="Submit">
+	</form>
+	</center>
+		</div>
+	{% if searchText %}
+		<br>
+
+		<form method="POST" action="/save">
+			<input type="hidden" name="searchText" value="{{searchText}}">
+			<input type="submit" name="save" value="Save Search">
+		</form>
+	{%endif %}
+
+    <br>
+<center>
+	<div>
+	<button id="tab0" onclick="allFunction()">ALL</button>
+	<button id="tab1" onclick="wikiFunction()">Wikipedia</button>
+	<button id="tab2" onclick="flickrFunction()">Flickr</button>
+	<button id="tab3" onclick="twitterFunction()">Twitter</button>
+	</div>
+	</center>
+
+	{% if searchText %}
+      <div id="flickrElement">
+	  <h1>Flickr</h1>
+	  <br>
+	  
+	  
+	{% for photo in flickrImageList %}
+		
+	  <img src={{photo}}  width="25%"></img>
+	{% endfor %}
+	  
+	  </div>
+	  <div id="wikiElement">
+	  <h1>Wikipedia</h1>
+	  <br>
+	  <img src={{wikiImage}} height="25%" width="25%"></img>
+	  <br>
+
+
+	  {{wikiText}}
+	  </div>
+        <div id="twitterElement">
+        <h1>Twitter</h1>
+		<br>
+		{{ twitterText }}
+        </div>
+	   {%endif %}
+
+  <script>
+       function flickrFunction(){
+          var w = document.getElementById("wikiElement");
+          var f = document.getElementById("flickrElement");
+          var t = document.getElementById("twitterElement");
+
+           w.style.display = "none";
+           f.style.display = "block"
+           t.style.display = "none";
+
+
+
+      }
+      function wikiFunction(){
+          var w = document.getElementById("wikiElement");
+          var f = document.getElementById("flickrElement");
+          var t = document.getElementById("twitterElement");
+           w.style.display = "block"
+           f.style.display = "none"
+           t.style.display = "none";
+
+      }
+      function twitterFunction(){
+          var w = document.getElementById("wikiElement");
+          var f = document.getElementById("flickrElement");
+          var t = document.getElementById("twitterElement");
+
+           w.style.display = "none"
+           t.style.display = "block"
+           f.style.display = "none"
+
+      }
+function allFunction(){
+          var w = document.getElementById("wikiElement");
+          var f = document.getElementById("flickrElement");
+          var t = document.getElementById("twitterElement");
+
+           w.style.display = "block";
+           f.style.display = "block"
+           t.style.display = "block";
+
+
+
+      }
+  </script>
+  </body>
+</html>

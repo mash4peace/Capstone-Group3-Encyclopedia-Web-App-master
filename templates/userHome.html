@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Home </title>
+    <link rel="stylesheet"
+      type="text/css"
+      href="../static/styles/userStyles.css"/>
+</head>
+<body>
+<p><a href = '/results'>Continue to search page</a></p>
+<p>Click <a href = '/logout'>here</a> to log out</p>
+<center><H1>Saved User Searches</H1></center>
+
+<br>
+
+<p>Click <a href = '/delete'>here</a> to delete all searches</p>
+
+<h3>Recent Searches:</h3>
+<br>
+<table>
+{% for searches in searchList %}
+<tr>
+<td>
+
+{{searches[0]}}     
+</td>
+<td>
+{{searches[1]}}
+</td>
+<td>
+<form method="POST" action="">
+<input type="hidden" name='searchTerm' value={{searches[0]}}></input>
+<button type="submit">Search</button>
+</form>
+</td>
+</tr>
+    </table>
+<br>
+{% endfor %}
+</body>
+</html>
